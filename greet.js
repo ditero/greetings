@@ -5,13 +5,15 @@ var dsplName = document.getElementById('displayName');
 var dsplCount = document.getElementById('keepTrk');
 var radioBtn = document.getElementsByName('glan');
 
+var name = txtName.value;
+
 var namesGreeted = [];
 var x = 0;
 var countGreet = 0;
 var clickMe = function(){
   countGreet++;
-
   var greetMe = null;
+
   for(var i = 0; i<radioBtn.length; i++){
 
       if(radioBtn[i].checked){
@@ -28,51 +30,28 @@ var clickMe = function(){
       greetMe = radioBtn[i].value +", "+ txtName.value;
       dsplName.innerHTML = greetMe;
   }
-  //LocalStorage: This part stores the number of times greeted
-   if(typeof(Storage) !== "undefined") {
-        if (localStorage.clickcount) {
-            localStorage.clickcount = Number(localStorage.clickcount)+1;
-        } else {
-            localStorage.clickcount = 1;
-        }
-        dsplCount.innerHTML = localStorage.clickcount;
-    }
-  //dsplCount.innerHTML = countGreet;
-  //txtName.value = '';
       }
-    //namesGreeted.push(txtName);
-    /*  for(var j = 0; j < namesGreeted.length; j++){
-          if(txtName.value !== namesGreeted[j]) {
-              console.log(namesGreeted);
-              if(typeof(Storage) !== "undefined") {
-        if (localStorage.clickcount) {
-            localStorage.clickcount = Number(localStorage.clickcount)+1;
-        } else {
-            localStorage.clickcount = 1;
-        }
-        dsplCount.innerHTML = localStorage.clickcount;
-          }
-
-      }
-
-
-  }*/
 
 }
 
 
 };
-var haveIgreet = function checkGreet(){
+function checkGreet(){
+  var state = false;
 
-  if ((txtName.value != namesGreeted[0]) || (txtName.value != namesGreeted[x])) {
-    for (x = 0; i < namesGreeted.length; i++) {
-      array[i]
-    }
-    namesGreeted.push(txtName.value);
-    console.log(namesGreeted[x]);
-    x++;
+for (var i = 0; i < namesGreeted.length; i++) {
+  if (txtName.value === namesGreeted[i]) {
+    //console.log("Found Name");
+     state = true;
+
+
   }
+  else {
 
+    state = false;
+  }
+}
+return state;
 };
 var resetAll = function resentCounter(){
 
@@ -81,6 +60,22 @@ var resetAll = function resentCounter(){
              txtName.value = '';
 
 };
-greetBtn.addEventListener('click',clickMe);
-greetBtn.addEventListener('click',haveIgreet);
+//greetBtn.addEventListener('click',clickMe);
+greetBtn.addEventListener('click', function(){
+    clickMe();
+    var ifGreeted = checkGreet();
+    if (ifGreeted === false) {
+      namesGreeted.push(txtName.value);
+      if(typeof(Storage) !== "undefined") {
+           if (localStorage.clickcount) {
+               localStorage.clickcount = Number(localStorage.clickcount)+1;
+           } else {
+               localStorage.clickcount = 1;
+           }
+           dsplCount.innerHTML = localStorage.clickcount;
+       }
+    }
+    console.log(namesGreeted);
+   checkGreet();
+} );
 rstBtn.addEventListener('click',resetAll);
