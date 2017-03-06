@@ -1,0 +1,61 @@
+var greetBtn = document.getElementById('myBtn');
+var rstBtn = document.getElementById('resetBtn');
+var txtName = document.getElementById('myText');
+var dsplName = document.getElementById('displayName');
+var dsplCount = document.getElementById('keepTrk');
+var radioBtn = document.getElementsByName('glan');
+
+var namesGreeted = {}; 
+var countGreet = 0;
+var clickMe = function(){
+  countGreet++;
+  //var li = null;
+  var greetMe = null;
+  for(var i = 0; radioBtn.length; i++){
+      if(radioBtn[i].checked){
+          if(radioBtn[i].value === "Hello"){
+          greetMe = radioBtn[i].value +" "+ txtName.value;
+          dsplName.innerHTML = greetMe;
+      }
+  else if(radioBtn[i].value === "Hallo"){
+      greetMe = radioBtn[i].value +" "+ txtName.value;
+      dsplName.innerHTML = greetMe;
+      
+  }         
+   else if(radioBtn[i].value === "Molo"){
+      greetMe = radioBtn[i].value +" "+ txtName.value;
+      dsplName.innerHTML = greetMe;
+  }
+    
+  //dsplCount.innerHTML = countGreet;
+  //txtName.value = '';
+      }
+      namesGreeted.push(txtName);
+      if(namesGreeted[txtName] === "undefined"){
+          
+          if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+        } else {
+            localStorage.clickcount = 1;
+        }
+        dsplCount.innerHTML = localStorage.clickcount;
+        } 
+                    
+    }
+      
+  
+ 
+  }
+  
+  
+};
+var resetAll = function resetCounter(){
+     
+            localStorage.clear();
+            dsplCount.innerHTML = 0;
+             txtName.value = '';
+                  
+};
+greetBtn.addEventListener('click',clickMe);
+rstBtn.addEventListener('click',resetAll);
