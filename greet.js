@@ -10,11 +10,14 @@ var name = txtName.value;
 var namesGreeted = [];
 var x = 0;
 var countGreet = 0;
+var inpt = null;
 var clickMe = function(){
   countGreet++;
   var greetMe = null;
+  inpt = txtName.value;
+if(inpt.length !== 0){
 
-  for(var i = 0; i<radioBtn.length; i++){
+    for(var i = 0; i<radioBtn.length; i++){
 
       if(radioBtn[i].checked){
           if(radioBtn[i].value === "Hello"){
@@ -33,6 +36,12 @@ var clickMe = function(){
       }
 
 }
+
+}
+else{
+    dsplName.innerHTML = "PLEASE GREET SOMEONE!";
+}
+
 
 
 };
@@ -64,7 +73,8 @@ var resetAll = function resentCounter(){
 greetBtn.addEventListener('click', function(){
     clickMe();
     var ifGreeted = checkGreet();
-    if (ifGreeted === false) {
+    if(inpt.length !== 0){
+        if (ifGreeted === false) {
       namesGreeted.push(txtName.value);
       if(typeof(Storage) !== "undefined") {
            if (localStorage.clickcount) {
@@ -75,7 +85,9 @@ greetBtn.addEventListener('click', function(){
            dsplCount.innerHTML = localStorage.clickcount;
        }
     }
-    console.log(namesGreeted);
+    }
+
+
    checkGreet();
 } );
 rstBtn.addEventListener('click',resetAll);
