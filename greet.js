@@ -11,11 +11,12 @@ var namesGreeted = [];
 var x = 0;
 var countGreet = 0;
 var inpt = null;
+var letters = /^[A-Za-z]+$/;
 var clickMe = function(){
   countGreet++;
   var greetMe = null;
   inpt = txtName.value;
-if(inpt.length !== 0){
+if(inpt.match(letters)){
 
     for(var i = 0; i<radioBtn.length; i++){
 
@@ -73,7 +74,7 @@ var resetAll = function resentCounter(){
 greetBtn.addEventListener('click', function(){
     clickMe();
     var ifGreeted = checkGreet();
-    if(inpt.length !== 0){
+    if(inpt.match(letters)){
         if (ifGreeted === false) {
       namesGreeted.push(txtName.value);
       if(typeof(Storage) !== "undefined") {
