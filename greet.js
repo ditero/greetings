@@ -12,6 +12,7 @@ var x = 0;
 var countGreet = 0;
 var inpt = null;
 var letters = /^[A-Za-z]+$/;
+
 var clickMe = function(){
   countGreet++;
   var greetMe = null;
@@ -21,20 +22,11 @@ if(inpt.match(letters)){
     for(var i = 0; i<radioBtn.length; i++){
 
       if(radioBtn[i].checked){
-          if(radioBtn[i].value === "Hello"){
+
           greetMe = radioBtn[i].value +", "+ txtName.value;
           dsplName.innerHTML = greetMe;
-      }
-  else if(radioBtn[i].value === "Hallo"){
-      greetMe = radioBtn[i].value +", "+ txtName.value;
-      dsplName.innerHTML = greetMe;
 
-  }
-   else if(radioBtn[i].value === "Molo"){
-      greetMe = radioBtn[i].value +", "+ txtName.value;
-      dsplName.innerHTML = greetMe;
-  }
-      }
+         }
 
 }
 
@@ -43,14 +35,13 @@ else{
     dsplName.innerHTML = "PLEASE GREET SOMEONE!";
 }
 
-
-
 };
+
 function checkGreet(){
   var state = false;
-
-for (var i = 0; i < namesGreeted.length; i++) {
-  if (txtName.value === namesGreeted[i]) {
+var count = 0;
+for (count = 0; count <= namesGreeted.length; count++) {
+  if (txtName.value === namesGreeted[count+1]) {
     //console.log("Found Name");
      state = true;
 
@@ -88,7 +79,9 @@ greetBtn.addEventListener('click', function(){
     }
     }
 
-
+    console.log(namesGreeted);
+    //console.log(count);
+    console.log(namesGreeted.length);
    checkGreet();
 } );
 rstBtn.addEventListener('click',resetAll);
