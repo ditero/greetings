@@ -12,7 +12,6 @@ var x = 0;
 var countGreet = 0;
 var inpt = null;
 var letters = /^[A-Za-z]+$/;
-
 var clickMe = function(){
   countGreet++;
   var greetMe = null;
@@ -25,8 +24,7 @@ if(inpt.match(letters)){
 
           greetMe = radioBtn[i].value +", "+ txtName.value;
           dsplName.innerHTML = greetMe;
-
-         }
+      }
 
 }
 
@@ -35,13 +33,14 @@ else{
     dsplName.innerHTML = "PLEASE GREET SOMEONE!";
 }
 
-};
 
+
+};
 function checkGreet(){
   var state = false;
-var count = 0;
-for (count = 0; count <= namesGreeted.length; count++) {
-  if (txtName.value === namesGreeted[count+1]) {
+
+for (var i = 0; i < namesGreeted.length; i++) {
+  if (txtName.value === namesGreeted[i]) {
     //console.log("Found Name");
      state = true;
 
@@ -79,9 +78,7 @@ greetBtn.addEventListener('click', function(){
     }
     }
 
-    //console.log(namesGreeted);
-    //console.log(count);
-    //console.log(namesGreeted.length);
+
    checkGreet();
 } );
 rstBtn.addEventListener('click',resetAll);
