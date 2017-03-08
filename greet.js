@@ -7,7 +7,7 @@ var radioBtn = document.getElementsByName('glan');
 
 var name = txtName.value;
 
-var namesGreeted = [];
+var namesGreeted = {};
 var x = 0;
 var countGreet = 0;
 var inpt = null;
@@ -19,41 +19,32 @@ var clickMe = function(){
 if(inpt.match(letters)){
 
     for(var i = 0; i<radioBtn.length; i++){
-
       if(radioBtn[i].checked){
-
           greetMe = radioBtn[i].value +", "+ txtName.value;
           dsplName.innerHTML = greetMe;
       }
-
 }
 
 }
 else{
     dsplName.innerHTML = "PLEASE GREET SOMEONE!";
 }
-
-
-
 };
+
 function checkGreet(){
   var state = false;
 
-for (var i = 0; i < namesGreeted.length; i++) {
-  if (txtName.value === namesGreeted[i]) {
-    //console.log("Found Name");
+  if (namesGreeted[txtName.value] !== undefined) {
+
      state = true;
-
-
   }
   else {
-
     state = false;
   }
-}
 return state;
 };
-var resetAll = function resentCounter(){
+
+var resetAll = function reset(){
 
             localStorage.clear();
             dsplCount.innerHTML = 0;
@@ -66,7 +57,8 @@ greetBtn.addEventListener('click', function(){
     var ifGreeted = checkGreet();
     if(inpt.match(letters)){
         if (ifGreeted === false) {
-      namesGreeted.push(txtName.value);
+      //namesGreeted.push(txtName.value);
+      namesGreeted[txtName.value] = 1;
       if(typeof(Storage) !== "undefined") {
            if (localStorage.clickcount) {
                localStorage.clickcount = Number(localStorage.clickcount)+1;
@@ -77,8 +69,6 @@ greetBtn.addEventListener('click', function(){
        }
     }
     }
-
-
    checkGreet();
 } );
 rstBtn.addEventListener('click',resetAll);
