@@ -79,9 +79,9 @@ greetBtn.addEventListener('click', function(){
     }
     }
 
-    console.log(namesGreeted);
+    //console.log(namesGreeted);
     //console.log(count);
-    console.log(namesGreeted.length);
+    //console.log(namesGreeted.length);
    checkGreet();
 } );
 rstBtn.addEventListener('click',resetAll);
