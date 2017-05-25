@@ -10,21 +10,13 @@ var radioBtn = document.getElementsByName('glan');
 //Declaring Global varibles
 var namesGreeted = {};
 var countGreet = 0;
-var letters = /^[A-Za-z]+$/;
 
-var getChoice = function(languages){
-  for (var i = 0; i < radioBtn.length; i++) {
-    if (radioBtn[i].checked) {
-      // greetMe = radioBtn[i].value + ", " + txtName.value;
-      return radioBtn[i].value;
-      dsplName.innerHTML = greetMe;
-    }
-  }
 
-};
 
+// Get the name of the user from the inout Area.
 var getUser = function(passName) {
-  countGreet++;
+
+  var letters = /^[A-Za-z]+$/;
   var greetMe = null;
    var userName = passName;
   if (userName.match(letters)) {
@@ -33,6 +25,24 @@ var getUser = function(passName) {
     return "PLEASE GREET SOMEONE!";
   }
 };
+
+//Checking which Greeting language has been selected
+var getChoice = function(languages){
+  for (var i = 0; i < languages.length; i++) {
+    if (languages[i].checked) {
+      // greetMe = radioBtn[i].value + ", " + txtName.value;
+      return languages[i].value;
+    }
+  }
+
+};
+
+// Displays the greeting message
+var greetMessage = function(){
+  var message = getChoice(radioBtn)+", "+getUser(txtName.value);
+  countGreet++;
+  dsplName.innerHTML = message;
+}
 
 function checkGreet() {
   var state = false;
@@ -55,7 +65,7 @@ var resetAll = function reset() {
 };
 //greetBtn.addEventListener('click',getInputs);
 greetBtn.addEventListener('click', function() {
-  getInputs();
+  greetMessage();
   var ifGreeted = checkGreet();
   if (inpt.match(letters)) {
     if (ifGreeted === false) {

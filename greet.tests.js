@@ -10,12 +10,12 @@ describe('The getUser function', function(){
 });
 
 describe('The greetChoice function', function(){
-
-    it('Should greet correctly', function(){
-        assert.deepEqual(getChoice(['English', 'Afrikaans', 'isiXhosa']),'Molo');
+choices = {English: 'Hello', Afrikaans: 'Hallo', IsiXhosa: 'Molo'}
+    it('Should greet correctly in IsiXhosa', function(){
+        assert.deepEqual(getChoice(choices,'IsiXhosa'),'Molo');
     });
-    it('Should display message correctly for unexpected input', function(){
+    it('Should greet correctly in English', function(){
         // this test will fail - can you fix it?
-        assert.equal("PLEASE GREET SOMEONE!", getChoice());
+        assert.deepEqual(getChoice(choices, 'English'), 'Hello');
     });
 });
