@@ -10,14 +10,11 @@ var radioBtn = document.getElementsByName('glan');
 //Declaring Global varibles
 var namesGreeted = {};
 var countGreet = 0;
-
-
+var letters = /^[A-Za-z]+$/;
 
 // Get the name of the user from the inout Area.
 var getUser = function(passName) {
 
-  var letters = /^[A-Za-z]+$/;
-  var greetMe = null;
    var userName = passName;
   if (userName.match(letters)) {
     return userName;
@@ -30,7 +27,7 @@ var getUser = function(passName) {
 var getChoice = function(languages){
   for (var i = 0; i < languages.length; i++) {
     if (languages[i].checked) {
-      // greetMe = radioBtn[i].value + ", " + txtName.value;
+
       return languages[i].value;
     }
   }
@@ -55,20 +52,11 @@ function checkGreet() {
   }
   return state;
 };
-// Reset All inputs and output
-var resetAll = function reset() {
 
-  localStorage.clear();
-  dsplCount.innerHTML = 0;
-  txtName.value = '';
-
-};
-
-//greetBtn.addEventListener('click',getInputs);
-greetBtn.addEventListener('click', function() {
-  greetMessage();
+//Save to localStorage
+var saveToStorage = function(){
   var ifGreeted = checkGreet();
-  if (inpt.match(letters)) {
+  if (txtName.value.match(letters)) {
     if (ifGreeted === false) {
       namesGreeted[txtName.value] = 1;
       if (typeof(Storage) !== "undefined") {
@@ -81,6 +69,22 @@ greetBtn.addEventListener('click', function() {
       }
     }
   }
-  checkGreet();
+};
+
+// Reset All inputs and output of count
+var resetAll = function reset() {
+
+  localStorage.clear();
+  //namesGreeted = {};
+  dsplCount.innerHTML = 0;
+  txtName.value = '';
+
+};
+
+//greetBtn.addEventListener('click',getInputs);
+greetBtn.addEventListener('click', function() {
+  greetMessage();
+  saveToStorage();
 });
+
 rstBtn.addEventListener('click', resetAll);

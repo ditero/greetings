@@ -4,7 +4,7 @@ describe('The getUser function', function(){
         assert.equal('Andile', getUser('Andile'));
     });
     it('getUser function: should display message correctly for unexpected input', function(){
-        // this test will fail - can you fix it?
+
         assert.equal("PLEASE GREET SOMEONE!", getUser('11343#'));
     });
 });
@@ -15,7 +15,7 @@ choices = {English: 'Hello', Afrikaans: 'Hallo', IsiXhosa: 'Molo'}
         assert.deepEqual(getChoice(choices,'IsiXhosa'),'Molo');
     });
     it('Should greet correctly in English', function(){
-        // this test will fail - can you fix it?
+
         assert.deepEqual(getChoice(choices, 'English'), 'Hello');
     });
 });
@@ -26,7 +26,11 @@ choices = {English: 'Hello', Afrikaans: 'Hallo', IsiXhosa: 'Molo'}
         assert.deepEqual(greetMessage(choices,'IsiXhosa', 'Anele'),'Molo, Anele');
     });
     it('Should greet Cara correctly in English', function(){
-        // this test will fail - can you fix it?
+
         assert.deepEqual(greetMessage(choices, 'English', 'Cara'), 'Hello, Cara');
+    });
+    it('should display message correctly for unexpected input', function(){
+
+        assert.deepEqual(greetMessage(choices, 'English', '.@#'), "Hello, PLEASE GREET SOMEONE!");
     });
 });
