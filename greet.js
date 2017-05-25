@@ -42,7 +42,7 @@ var greetMessage = function(){
   var message = getChoice(radioBtn)+", "+getUser(txtName.value);
   countGreet++;
   dsplName.innerHTML = message;
-}
+};
 
 function checkGreet() {
   var state = false;
@@ -55,7 +55,7 @@ function checkGreet() {
   }
   return state;
 };
-
+// Reset All inputs and output
 var resetAll = function reset() {
 
   localStorage.clear();
@@ -63,6 +63,7 @@ var resetAll = function reset() {
   txtName.value = '';
 
 };
+
 //greetBtn.addEventListener('click',getInputs);
 greetBtn.addEventListener('click', function() {
   greetMessage();
