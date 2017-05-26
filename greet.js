@@ -15,7 +15,7 @@ var letters = /^[A-Za-z]+$/;
 // Get the name of the user from the inout Area.
 var getUser = function(passName) {
 
-   var userName = passName;
+  var userName = passName;
   if (userName.match(letters)) {
     return userName;
   } else {
@@ -24,7 +24,7 @@ var getUser = function(passName) {
 };
 
 //Checking which Greeting language has been selected
-var getChoice = function(languages){
+var getChoice = function(languages) {
   for (var i = 0; i < languages.length; i++) {
     if (languages[i].checked) {
 
@@ -35,8 +35,8 @@ var getChoice = function(languages){
 };
 
 // Displays the greeting message
-var greetMessage = function(){
-  var message = getChoice(radioBtn)+", "+getUser(txtName.value);
+var greetMessage = function(choice, userName) {
+  var message = getChoice(choice) + ", " + getUser(userName);
   countGreet++;
   dsplName.innerHTML = message;
 };
@@ -54,7 +54,7 @@ function checkGreet() {
 };
 
 //Save to localStorage
-var saveToStorage = function(){
+var saveToStorage = function() {
   var ifGreeted = checkGreet();
   if (txtName.value.match(letters)) {
     if (ifGreeted === false) {
@@ -83,7 +83,7 @@ var resetAll = function reset() {
 
 //greetBtn.addEventListener('click',getInputs);
 greetBtn.addEventListener('click', function() {
-  greetMessage();
+  greetMessage(radioBtn, txtName.value);
   saveToStorage();
 });
 
