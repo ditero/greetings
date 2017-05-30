@@ -20,17 +20,22 @@ describe('The greetChoice function', function() {
   });
 });
 
-describe('The greetMessage function', function() {
+describe('The Message function', function() {
 
   it('Should greet Anele correctly in IsiXhosa', function() {
-    assert.deepEqual(greetMessage('IsiXhosa', 'Anele'), 'Molo, Anele');
+    assert.deepEqual(message('IsiXhosa', 'Anele'), 'Molo, Anele');
   });
 
   it('Should greet Cara correctly in English', function() {
-    assert.deepEqual(greetMessage('English', 'Cara'), 'Hello, Cara');
+    assert.deepEqual(message('English', 'Cara'), 'Hello, Cara');
+  });
+
+  it('Should greet Joe correctly in Afrikaans', function() {
+    assert.deepEqual(message('Afrikaans', 'Joe'), 'Goie more, Joe');
   });
 
   it('should display message correctly for unexpected input', function() {
-    assert.deepEqual(greetMessage('English', '.@#'), "Hello, PLEASE GREET SOMEONE!");
-  });
+     assert.deepEqual(greetMessage('English', '.@#'), "Hello, PLEASE GREET SOMEONE!");
+   });
+
 });
