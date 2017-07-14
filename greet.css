@@ -49,6 +49,13 @@ p {
   display: block;
   color: #FFF;
 }
+.choose{
+  align-content:  center;
+  margin: 1.5% auto;
+  text-align-last: center;
+  display: block;
+  color: #FFF;
+}
 h1{
   align-content:  center;
     margin: 5% auto;
@@ -91,7 +98,8 @@ button {
 .radio{
   align-content:  center;
   display:inline;
-  margin: 15px auto;
+
+  margin-top: 5%;
   width:20px;
   margin-left:140px;
 }
